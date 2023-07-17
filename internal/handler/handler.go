@@ -1,6 +1,6 @@
 package handler
 
-import "api-blog/internal/service"
+import "github.com/Tilvaldiyev/blog-api/internal/service"
 
 type Handler struct {
 	srvs service.Service

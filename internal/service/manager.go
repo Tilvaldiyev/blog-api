@@ -1,8 +1,8 @@
 package service
 
 import (
-	"api-blog/internal/config"
-	"api-blog/internal/repository"
+	"github.com/Tilvaldiyev/blog-api/internal/config"
+	"github.com/Tilvaldiyev/blog-api/internal/repository"
 )
 
 type Manager struct {

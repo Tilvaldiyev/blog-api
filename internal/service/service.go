@@ -1,8 +1,8 @@
 package service
 
 import (
-	"api-blog/internal/entity"
 	"context"
+	"github.com/Tilvaldiyev/blog-api/internal/entity"
 )
 
 type Service interface {

@@ -1,9 +1,9 @@
 package pgrepo
 
 import (
-	"api-blog/internal/entity"
 	"context"
 	"fmt"
+	"github.com/Tilvaldiyev/blog-api/internal/entity"
 )
 
 func (p *Postgres) CreateUser(ctx context.Context, u *entity.User) error {

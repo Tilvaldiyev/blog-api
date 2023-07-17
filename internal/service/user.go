@@ -1,9 +1,9 @@
 package service
 
 import (
-	"api-blog/internal/entity"
-	"api-blog/pkg/util"
 	"context"
+	"github.com/Tilvaldiyev/blog-api/internal/entity"
+	"github.com/Tilvaldiyev/blog-api/pkg/util"
 )
 
 func (m *Manager) CreateUser(ctx context.Context, u *entity.User) error {

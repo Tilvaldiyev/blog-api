@@ -1,11 +1,11 @@
 package app
 
 import (
-	"api-blog/internal/config"
-	"api-blog/internal/handler"
-	"api-blog/internal/repository/pgrepo"
-	"api-blog/internal/service"
-	"api-blog/pkg/httpserver"
+	"github.com/Tilvaldiyev/blog-api/internal/config"
+	"github.com/Tilvaldiyev/blog-api/internal/handler"
+	"github.com/Tilvaldiyev/blog-api/internal/repository/pgrepo"
+	"github.com/Tilvaldiyev/blog-api/internal/service"
+	"github.com/Tilvaldiyev/blog-api/pkg/httpserver"
 	"log"
 	"os"
 	"os/signal"
