@@ -7,7 +7,8 @@ import (
 
 type Service interface {
 	CreateUser(ctx context.Context, u *entity.User) error
-	//Login(ctx context.Context, username, password string) (string, error)
+	Login(ctx context.Context, username, password string) (string, error)
+	VerifyToken(token string) (int64, error)
 	//UpdateUser(ctx context.Context, u *entity.User) error
 	//DeleteUser(ctx context.Context, id int64) error
 	//VerifyToken(token string) error

@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"github.com/Tilvaldiyev/blog-api/internal/entity"
+	"github.com/georgysavva/scany/pgxscan"
+	"strings"
 )
 
 func (p *Postgres) CreateUser(ctx context.Context, u *entity.User) error {
@@ -23,4 +25,17 @@ func (p *Postgres) CreateUser(ctx context.Context, u *entity.User) error {
 	}
 
 	return nil
+}
+
+func (p *Postgres) GetUser(ctx context.Context, username string) (*entity.User, error) {
+	user := new(entity.User)
+
+	query := fmt.Sprintf("SELECT id, username, first_name, last_name, hashed_password FROM %s WHERE username = $1", usersTable)
+
+	err := pgxscan.Get(ctx, p.Pool, user, query, strings.TrimSpace(username))
+	if err != nil {
+		return nil, err
+	}
+
+	return user, nil
 }

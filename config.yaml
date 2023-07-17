@@ -8,5 +8,8 @@ http:
 db:
   host: 'localhost'
   port: '5432'
-  db_name: 'blog_db'
+  db_name: 'postgres'
   username: 'postgres'
+
+token:
+  time_to_live: "15m"
