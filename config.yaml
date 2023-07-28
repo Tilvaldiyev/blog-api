@@ -1,5 +1,5 @@
 http:
-  port: ':8080'
+  port: ':8081'
   timeout: '30s'
   shutdown_timeout: '30s'
   read_timeout: '15s'
@@ -10,6 +10,8 @@ db:
   port: '5432'
   db_name: 'postgres'
   username: 'postgres'
+  migration_path: 'migrations/pg'
+  migration_version: 3
 
 token:
   time_to_live: "15m"

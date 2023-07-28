@@ -25,11 +25,13 @@ type ServerConfig struct {
 }
 
 type DBConfig struct {
-	Host     string `yaml:"host"`
-	Port     string `yaml:"port"`
-	DBName   string `yaml:"db_name"`
-	Username string `yaml:"username"`
-	Password string `env:"DB_PASSWORD" env-required:"true"`
+	Host             string `yaml:"host"`
+	Port             string `yaml:"port"`
+	DBName           string `yaml:"db_name"`
+	Username         string `yaml:"username"`
+	MigrationPath    string `yaml:"migration_path"`
+	MigrationVersion uint   `yaml:"migration_version"`
+	Password         string `env:"DB_PASSWORD" env-required:"true"`
 }
 
 func InitConfig(path string) (*Config, error) {

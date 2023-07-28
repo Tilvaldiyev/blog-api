@@ -13,7 +13,7 @@ import (
 )
 
 func Run(cfg *config.Config) error {
-	db, err := pgrepo.New(
+	db, err := pgrepo.NewSQL(
 		pgrepo.WithHost(cfg.DB.Host),
 		pgrepo.WithPort(cfg.DB.Port),
 		pgrepo.WithDBName(cfg.DB.DBName),
@@ -25,6 +25,13 @@ func Run(cfg *config.Config) error {
 		return err
 	}
 	log.Println("connection success")
+
+	migration := pgrepo.NewMigrate(cfg)
+
+	err = migration.MigrateToVersion(cfg.DB.MigrationVersion)
+	if err != nil {
+		return err
+	}
 
 	token := jwttoken.New(cfg.Token.SecretKey)
 	srvs := service.New(db, token, cfg)
