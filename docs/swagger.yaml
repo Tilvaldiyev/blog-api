@@ -1,0 +1,70 @@
+basePath: /api/v1
+definitions:
+  api.Error:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
+  api.RegisterRequest:
+    properties:
+      first_name:
+        type: string
+      id:
+        type: integer
+      last_name:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - first_name
+    - last_name
+    - password
+    - username
+    type: object
+host: localhost:8081
+info:
+  contact:
+    email: email@gmail.com
+    name: Alisher
+  description: API for Blog application
+  title: Blog API
+  version: 0.0.1
+paths:
+  /user/register:
+    post:
+      consumes:
+      - application/json
+      description: Create new user
+      parameters:
+      - description: req body
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/api.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.Error'
+      summary: Create user
+      tags:
+      - auth
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
