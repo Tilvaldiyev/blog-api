@@ -6,7 +6,6 @@ import (
 	"github.com/Tilvaldiyev/blog-api/internal/entity"
 	"github.com/georgysavva/scany/pgxscan"
 	"strings"
-	"time"
 )
 
 func (p *Postgres) CreateUser(ctx context.Context, u *entity.User) error {
@@ -20,9 +19,7 @@ func (p *Postgres) CreateUser(ctx context.Context, u *entity.User) error {
 			VALUES ($1, $2, $3, $4)
 			`, usersTable)
 
-	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
-	defer cancel()
-
+	fmt.Println(u)
 	_, err := p.Pool.Exec(ctx, query, u.Username, u.FirstName, u.LastName, u.Password)
 	if err != nil {
 		return err

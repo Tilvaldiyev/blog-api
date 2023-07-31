@@ -2,11 +2,25 @@ package handler
 
 import (
 	"github.com/Tilvaldiyev/blog-api/api"
+	"github.com/Tilvaldiyev/blog-api/internal/entity"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 )
 
+// createUser registration new user
+//
+//	@Summary      Create user
+//	@Description  Create new user
+//	@Tags         auth
+//	@Accept       json
+//	@Produce      json
+//	@Param req body api.RegisterRequest true "req body"
+//
+//	@Success      201
+//	@Failure      400  {object}  api.Error
+//	@Failure      500  {object}  api.Error
+//	@Router       /user/register [post]
 func (h *Handler) createUser(ctx *gin.Context) {
 	var req api.RegisterRequest
 
@@ -20,7 +34,14 @@ func (h *Handler) createUser(ctx *gin.Context) {
 		return
 	}
 
-	err = h.srvs.CreateUser(ctx, &req.User)
+	u := &entity.User{
+		Username:  req.Username,
+		FirstName: req.FirstName,
+		LastName:  req.LastName,
+		Password:  req.Password,
+	}
+
+	err = h.srvs.CreateUser(ctx, u)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, &api.Error{
 			Code:    -2,
