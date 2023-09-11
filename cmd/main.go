@@ -12,7 +12,7 @@ import (
 // @contact.name   Alisher
 // @contact.email  email@gmail.com
 
-// @host      localhost:8081
+// @host      localhost:8080
 // @BasePath  /api/v1
 
 // @securitydefinitions.apikey ApiKeyAuth
