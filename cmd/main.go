@@ -13,7 +13,7 @@ import (
 // @contact.email  email@gmail.com
 
 // @host      localhost:8080
-// @BasePath  /api/v1
+// @BasePath  /api/v2
 
 // @securitydefinitions.apikey ApiKeyAuth
 // @in header
